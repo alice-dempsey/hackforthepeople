@@ -6,16 +6,31 @@ p {
 	font-family: sans-serif; 
 }
 
+.header_wrapper {
+	display: flex; 
+	width: 100%; 
+	margin-top: 2%; 
+	margin-bottom: 3%;
+	align-items: baseline;
+}
+
+.tip_wrapper {
+	display: flex;
+	align-self: flex-end;
+	align-items: center; 
+	height: 30px;
+	width: 200px;
+	margin-left: 30%;  
+}
+
 .search_bar {
 	background-color: #FFA776; 
 	display: flex;
 	color: white;
 	width: 50%;
-	height: 30px;
 	align-items: center;
 	border-radius: 25px;
-	margin-top: 2%; 
-	margin-bottom: 3%;
+	height: 30px;
 }
 
 .placeholder_text {

@@ -9,11 +9,18 @@
   <meta name="author" content="Alice Dempsey">
 
   <link rel="stylesheet" href="style.css">
+  <script src="daily_tip.js"></script>
 </head>
 
 <body>
-  <div class="search_bar">
-    <p class="placeholder_text">Search here for resources</p>
+  <div class="header_wrapper"> 
+    <div class="search_bar">
+      <p class="placeholder_text">Search here for resources</p>
+    </div>
+
+    <div class="tip_wrapper" id="tip_wrapper">
+      <p><script type="text/javascript">generateTip()</script></p>
+    </div>
   </div>
 
   <div class="greeting_wrapper">
