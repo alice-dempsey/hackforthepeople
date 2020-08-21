@@ -90,4 +90,6 @@ p {
 	left: 55px;
 	border-radius: 20px;
 	margin: 3vw;
+	z-index: 10;
 }
+
