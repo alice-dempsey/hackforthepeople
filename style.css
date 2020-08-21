@@ -1,3 +1,10 @@
+body, html {
+	height: 100%;
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #76CEFF;
+}
+
 h2 {
 	font-family: sans-serif;
 }
@@ -9,8 +16,8 @@ p {
 .header_wrapper {
 	display: flex; 
 	width: 100%; 
-	margin-top: 2%; 
-	margin-bottom: 3%;
+	margin-top: 2vw; 
+	margin-bottom: 3vw;
 	align-items: baseline;
 }
 
@@ -18,9 +25,9 @@ p {
 	display: flex;
 	align-self: flex-end;
 	align-items: center; 
-	height: 30px;
-	width: 200px;
-	margin-left: 30%;  
+	height: 3vw;
+	width: 15vw;
+	margin-left: 30vw;  
 }
 
 .search_bar {
@@ -30,19 +37,19 @@ p {
 	width: 50%;
 	align-items: center;
 	border-radius: 25px;
-	height: 30px;
+	height: 3vw;
 	margin-left: 2vw; 
 }
 
 .placeholder_text {
 	display: flex;
-	margin-left: 20px; 
+	margin-left: 2vw; 
 	font-style: italic;
 }
 
 .greeting_wrapper {
 	width: 60%; 
-	margin-left: 2%;
+	margin-left: 3vw;
 }
 
 .add_page_wrapper {
@@ -69,13 +76,6 @@ p {
 	overflow-x: auto;
 	align-items: space-between;  
  }
-
-body, html {
-	height: 100%;
-	margin: 0;
-	font-family: Arial, Helvetica, sans-serif;
-	background-color: #76CEFF;
-}
 
 #panel {
 	margin-left: 6vw;
