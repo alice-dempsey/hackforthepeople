@@ -1,0 +1,26 @@
+{
+	"resource": {
+		"type": "book",
+		"title": "Science Explorer",
+		"description": "Read Introduction to the Scientific Method", 
+		"url": ""
+	}, 
+	"resource": {
+		"type": "worksheet",
+		"title": "What is the Scientific Method?",
+		"description": "Write a definition for the Scientific Method in your own words to share with the class on Monday.", 
+		"url": ""
+	},
+	"resource": {
+		"type": "worksheet",
+		"title": "Example Lab Report",
+		"description": "Label the different parts of the Scientific Method on this lab report.", 
+		"url": "https://s3.studylib.net/store/data/008097275_1-462ffb2276717b5f3e6f3c92eb1f9bbd.png"
+	},
+	"resource": {
+		"type": "book",
+		"title": "Science Explorer",
+		"description": "Read Chapter 5 on The Animal Kingdom.", 
+		"url": ""
+	}
+}

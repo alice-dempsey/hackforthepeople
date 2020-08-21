@@ -1,0 +1,26 @@
+{
+	"resource": {
+		"type": "website",
+		"title": "Khan Academy",
+		"description": "Work through Units 1-3 of Algebra", 
+		"url": "https://www.khanacademy.org/"
+	}, 
+	"resource": {
+		"type": "website",
+		"title": "Purple Math",
+		"description": "Review integers for our lesson on Monday", 
+		"url": "https://www.purplemath.com/"
+	},
+	"resource": {
+		"type": "worksheet",
+		"title": "Times Tables Review",
+		"description": "Complete the following worksheet", 
+		"url": "https://www.math-drills.com/multiplication2/images/multiplication_long_no_tseparator_0202_001_300.jpg?v=1472647486"
+	},
+	"resource": {
+		"type": "worksheet",
+		"title": "Times Tables Review 2",
+		"description": "Complete the following worksheet", 
+		"url": "https://globalpublicpolicywatch.org/x/2020/07/free-math-worksheets-third-grade-multiplication-printable-reviewer-sums-for-4th-692x895.jpg"
+	}
+}
