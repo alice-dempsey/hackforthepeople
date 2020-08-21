@@ -1,3 +1,10 @@
+body, html {
+	height: 100%;
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #76CEFF;
+}
+
 h2 {
 	font-family: sans-serif;
 }
@@ -6,27 +13,43 @@ p {
 	font-family: sans-serif; 
 }
 
+.header_wrapper {
+	display: flex; 
+	width: 100%; 
+	margin-top: 2vw; 
+	margin-bottom: 3vw;
+	align-items: baseline;
+}
+
+.tip_wrapper {
+	display: flex;
+	align-self: flex-end;
+	align-items: center; 
+	height: 3vw;
+	width: 15vw;
+	margin-left: 30vw;  
+}
+
 .search_bar {
 	background-color: #FFA776; 
 	display: flex;
 	color: white;
 	width: 50%;
-	height: 30px;
 	align-items: center;
 	border-radius: 25px;
-	margin-top: 2%; 
-	margin-bottom: 3%;
+	height: 3vw;
+	margin-left: 2vw; 
 }
 
 .placeholder_text {
 	display: flex;
-	margin-left: 20px; 
+	margin-left: 2vw; 
 	font-style: italic;
 }
 
 .greeting_wrapper {
 	width: 60%; 
-	margin-left: 2%;
+	margin-left: 3vw;
 }
 
 .add_page_wrapper {
@@ -50,14 +73,21 @@ p {
 .scroll_wrapper { 
 	display: flex; 
 	flex-wrap: nowrap;
-	overflow-x: auto; 
+	overflow-x: auto;
+	align-items: space-between;  
  }
 
-.card {
+#panel {
+	margin-left: 6vw;
+}
+
+.panel {
 	flex: 0 0 auto;
-	background-color: #A776FF;
-	height: 400px;
-	width: 400px; 
-	margin-left: 50px;
-	margin-right: 50px;
+	background-color: #fcfcfc;
+	width: 25vw;
+	height: 40vw;
+	top: 80px;
+	left: 55px;
+	border-radius: 20px;
+	margin: 3vw;
 }

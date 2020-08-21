@@ -4,16 +4,23 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Homeschool Buddy</title>
-  <meta name="description" content="Homeschool Buddy">
+  <title>HubSchool</title>
+  <meta name="description" content="HubSchool">
   <meta name="author" content="Alice Dempsey">
 
   <link rel="stylesheet" href="style.css">
+  <script src="daily_tip.js"></script>
 </head>
 
 <body>
-  <div class="search_bar">
-    <p class="placeholder_text">Search here for resources</p>
+  <div class="header_wrapper"> 
+    <div class="search_bar">
+      <p class="placeholder_text">Search here for resources</p>
+    </div>
+
+    <div class="tip_wrapper" id="tip_wrapper">
+      <p><script type="text/javascript">generateTip()</script></p>
+    </div>
   </div>
 
   <div class="greeting_wrapper">
@@ -22,13 +29,29 @@
   </div>
 
   <div class="add_page_wrapper">
-    <button class="add_page">Add Page</button>
+    <button class="add_page" id="add_page">Add Page</button>
   </div>
 
   <div class="scroll_wrapper">
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
+    <div class="panel" id="panel"></div>
+    <script>
+  document.getElementById('add_page').onclick = duplicate;
+  var i = 0;
+  var original = document.getElementById('panel');
+
+  function duplicate() {
+      var clone = original.cloneNode(true); // "deep" clone
+      clone.id = "panel" + ++i; // there can only be one element with an ID
+      original.parentNode.appendChild(clone);
+      if (clone.id == "panel1") {
+        document.getElementById("panel" + 1).style.left = "37vw";
+      }
+      else {
+        document.getElementById(clone.id).style.left = 35*i +"vw";
+      }
+  }
+
+</script>
   </div>
 </body>
 </html>
