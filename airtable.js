@@ -54,6 +54,28 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest; // Need this to u
         });
     }
     // xml request to do a patch, which is updating the given variable with a given value on airtable
+    function httpNew(tablename, value, variable){
+        // APIKey = (localStorage.getItem('saved_api').trim());
+        // BaseID = (localStorage.getItem('saved_baseID').trim());;
+
+        var xmlHttp = new XMLHttpRequest();
+        var url = "https://api.airtable.com/v0/" + docID + "/" + tablename +"/";
+
+        getid(tablename, variable);
+        // this is the format for a propvalue to update airtable
+        var propValue ={"records": [{"id": temp_id,"fields": {"Variables": variable, "Value": value.toString()}}]};
+        xmlHttp.open('POST', url, true);
+        xmlHttp.setRequestHeader('Content-Type','application/json');
+        xmlHttp.setRequestHeader('Authorization','Bearer ' + key);
+        xmlHttp.onreadystatechange = function() {
+        if(xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                console.log(xmlHttp.responseText);
+            }
+            console.log(xmlHttp.status)
+        };
+        xmlHttp.send(JSON.stringify(propValue));
+    }
+    // xml request to do a patch, which is updating the given variable with a given value on airtable
     function httpPatch(tablename, value, variable){
         // APIKey = (localStorage.getItem('saved_api').trim());
         // BaseID = (localStorage.getItem('saved_baseID').trim());;
@@ -63,8 +85,7 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest; // Need this to u
 
         getid(tablename, variable);
         // this is the format for a propvalue to update airtable
-        var propValue ={"records": [{"id": temp_id,"fields": {"Value": value.toString()}}]}
-
+        var propValue ={"records": [{"id": temp_id,"fields": {"Variables": variable, "Value": value.toString()}}]};
         xmlHttp.open('PATCH', url, true);
         xmlHttp.setRequestHeader('Content-Type','application/json');
         xmlHttp.setRequestHeader('Authorization','Bearer ' + key);
@@ -79,7 +100,8 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest; // Need this to u
 
 
 console.log(getvalue("Teacher Data", "socialstudies_class"));
-httpPatch("Teacher Data", "I'm alive", "Emun");
+httpNew("Teacher Data", "I'm alive", "NEW VAR");
+httpPatch("Teacher Data", "Here", "NEW VAR");
 
 
 
