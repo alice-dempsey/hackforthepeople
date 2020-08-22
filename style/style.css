@@ -1,0 +1,169 @@
+body, html {
+	height: 100%;
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #76CEFF;
+}
+
+h2 {
+	font-family: sans-serif;
+}
+
+p {
+	font-family: sans-serif; 
+}
+
+.header_wrapper {
+	display: flex; 
+	width: 100%; 
+	margin-top: 2vw; 
+	margin-bottom: 3vw;
+	align-items: baseline;
+}
+
+.tip_wrapper {
+	display: flex;
+	align-self: flex-end;
+	align-items: center; 
+	height: 3vw;
+	width: 15vw;
+	margin-left: 30vw;  
+}
+
+.search_bar {
+	background-color: #FFA776; 
+	display: flex;
+	color: white;
+	width: 50%;
+	align-items: center;
+	border-radius: 25px;
+	height: 3vw;
+	margin-left: 2vw; 
+}
+
+.placeholder_text {
+	display: flex;
+	margin-left: 2vw; 
+	font-style: italic;
+}
+
+.greeting_wrapper {
+	width: 60%; 
+	margin-left: 3vw;
+}
+
+.add_page_wrapper {
+	display: flex;
+	justify-content: flex-end;
+	width: 100%; 
+	flex-direction: column;
+}
+
+.add_page {
+	background-color: #FFA776;
+	border: none;
+	color: white;
+  padding: 15px 32px;
+  text-align: center;
+ 	text-decoration: none;
+	border-radius: 25px;
+	margin-bottom: 2%;
+	margin-right: 2%;  
+	width: 10%;
+	display: flex; 
+	align-self: flex-end;
+}
+
+.scroll_wrapper { 
+	display: flex; 
+	flex-wrap: nowrap;
+	overflow-x: auto;
+	align-items: space-between;
+	margin-right: 10px; 
+ }
+
+#panel {
+	margin-left: 6vw;
+}
+
+.panel {
+	flex: 0 0 auto;
+	background-color: #fcfcfc;
+	width: 25vw;
+	height: 40vw;
+	top: 80px;
+	left: 55px;
+	border-radius: 20px;
+	margin: 3vw;
+	overflow-y: scroll; 
+	z-index: 1;
+	/*display: flex;*/
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 10; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #A776FF;
+  color: white;
+}
+
+.modal-body {
+	padding: 20px 16px;
+	padding-bottom: 80px;
+}
+
