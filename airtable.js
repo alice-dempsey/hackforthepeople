@@ -1,4 +1,4 @@
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest; // Need this to use XMLHttpRequest since this is a nodejs file
+// var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest; // Need this to use XMLHttpRequest since this is a nodejs file
 
     // This should be the default for every Airtable 
     // var tablename = "Table 1"; 
@@ -25,6 +25,7 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest; // Need this to u
     // used to get the value of whatever variable is passed in
     // calls httpGet to open the request 
     function getvalue(tablename, name){
+        console.log('in getvalue')
         // the response is an array, so we parse through it looking for the right variable
         var arr = (JSON.parse(httpGet(docID, tablename, key))).records; 
         arr.forEach(function (arrayItem) {
@@ -39,6 +40,7 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest; // Need this to u
                 // realityInterface.write('value', write_value);
             }
         });
+        console.log(write_value)
         return write_value;
     }
 
@@ -97,12 +99,3 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest; // Need this to u
         };
         xmlHttp.send(JSON.stringify(propValue));
     }
-
-
-console.log(getvalue("Teacher Data", "socialstudies_class"));
-httpNew("Teacher Data", "I'm alive", "NEW VAR");
-httpPatch("Teacher Data", "Here", "NEW VAR");
-
-
-
-
