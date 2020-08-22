@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../style/style.css">
   <script src="../scripts/daily_tip.js"></script>
   <script src="../scripts/generate_materials.js"></script>
+  <script src="../airtable.js"></script>
 
 </head>
 
@@ -34,7 +35,7 @@
   </div>
 
   <div class="scroll_wrapper">
-      <div class="panel" id="panel" style="overflow-y: scroll;"><script>populatePanel("panel");</script></div>
+      <div class="panel" id="panel" style="overflow-y: scroll;"><script>populatePanel(getvalue("Teacher Data", "math_class"), "panel");</script></div>
   <img id="arrow" style="display: flex; position: absolute; align-self: flex-start; order: 10; right: 20px; bottom: 200px">
 
   <!-- The Modal -->
@@ -47,7 +48,7 @@
         <h2>Search for a page</h2>
       </div>
       <div class="modal-body">
-        <center><input type="text" name="search" placeholder="Search..." style="width: 90%; height: 35px; font-size: 18px; padding-left: 10px;"></center>
+        <center><input type="text" id="selected_class" name="search" placeholder="Search..." style="width: 90%; height: 35px; font-size: 18px; padding-left: 10px;"></center>
 
         <button id="save" style="position: relative; float: right; top: 25px; width: 15%; height: 30px; background-color: #FFA776; cursor: pointer;border: 0 none; color: #ffffff"><b>Save</b></button>
       </div>
@@ -60,12 +61,12 @@
     var i = 0;
     var original = document.getElementById('panel');
 
-    function duplicate() {
+    function duplicate(className) {
         var clone = original.cloneNode(true); // "deep" clone
         clone.id = "panel" + ++i; // there can only be one element with an ID
         original.parentNode.appendChild(clone);
         clone.innerHTML = "";
-        populatePanel(clone.id)
+        populatePanel(getvalue("Teacher Data", className), clone.id)
 
         if (i > 2) {
           document.getElementById("arrow").style.width = "4.5vw";
@@ -81,10 +82,12 @@
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
     var save_button = document.getElementById("save");
+    var modal_text = document.getElementById("selected_class"); 
     
     // When the user clicks the button, open the modal, and duplicate
     add_pg.onclick = function() {
       modal.style.display = "block";
+      modal_text.value = "";
     }
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
@@ -92,7 +95,7 @@
     }
 
     save_button.onclick = function() {
-      duplicate();
+      duplicate(document.getElementById("selected_class").value);
       modal.style.display = "none";
     }
 
