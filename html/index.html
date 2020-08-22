@@ -10,6 +10,8 @@
 
   <link rel="stylesheet" href="../style/style.css">
   <script src="../scripts/daily_tip.js"></script>
+  <script src="../scripts/generate_materials.js"></script>
+
 </head>
 
 <body>
@@ -33,7 +35,7 @@
   </div>
 
   <div class="scroll_wrapper">
-    <div class="panel" id="panel"></div>
+    <div class="panel" id="panel" style="overflow-y: scroll;"><script>populatePanel("panel");</script></div>
     <script>
   document.getElementById('add_page').onclick = duplicate;
   var i = 0;
@@ -49,6 +51,8 @@
       else {
         document.getElementById(clone.id).style.left = 35*i +"vw";
       }
+      clone.innerHTML = "";
+      populatePanel(clone.id)
   }
 
 </script>
