@@ -45,7 +45,9 @@
         <h2>Search for a page</h2>
       </div>
       <div class="modal-body">
-        <center><input type="text" name="search" placeholder="Search..." style="width: 90%; height: 35px; font-size: 18px"></center>
+        <center><input type="text" name="search" placeholder="Search..." style="width: 90%; height: 35px; font-size: 18px; padding-left: 10px;"></center>
+
+        <button id="save" style="position: relative; float: right; top: 25px; width: 15%; height: 30px; background-color: #FFA776; cursor: pointer;border: 0 none; color: #ffffff"><b>Save</b></button>
       </div>
     </div>
 
@@ -61,6 +63,7 @@
         clone.id = "panel" + ++i; // there can only be one element with an ID
         original.parentNode.appendChild(clone);
 
+
         if (i > 2) {
           document.getElementById("arrow").style.width = "4.5vw";
           document.getElementById("arrow").style.height = "4.5vw";
@@ -71,17 +74,22 @@
     // Get the modal
     var modal = document.getElementById("myModal");
     // Get the button that opens the modal
-    var btn = document.getElementById("add_page");
+    var add_pg = document.getElementById("add_page");
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
+    var save_button = document.getElementById("save");
     
     // When the user clicks the button, open the modal, and duplicate
-    btn.onclick = function() {
+    add_pg.onclick = function() {
       modal.style.display = "block";
-      duplicate();
     }
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    save_button.onclick = function() {
+      duplicate();
       modal.style.display = "none";
     }
 

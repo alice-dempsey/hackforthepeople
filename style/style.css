@@ -63,9 +63,9 @@ p {
 	background-color: #FFA776;
 	border: none;
 	color: white;
-  	padding: 15px 32px;
-  	text-align: center;
-  	text-decoration: none;
+  padding: 15px 32px;
+  text-align: center;
+ 	text-decoration: none;
 	border-radius: 25px;
 	margin-bottom: 2%;
 	margin-right: 2%;  
@@ -95,7 +95,7 @@ p {
 	left: 55px;
 	border-radius: 20px;
 	margin: 3vw;
-	z-index: 10;
+	z-index: 1;
 	display: flex;
 }
 
@@ -103,7 +103,7 @@ p {
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 10; /* Sit on top */
   padding-top: 100px; /* Location of the box */
   left: 0;
   top: 0;
@@ -111,7 +111,7 @@ p {
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
 }
 
 /* Modal Content */
@@ -161,5 +161,8 @@ p {
   color: white;
 }
 
-.modal-body {padding: 20px 16px;}
+.modal-body {
+	padding: 20px 16px;
+	padding-bottom: 80px;
+}
 
