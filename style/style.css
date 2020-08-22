@@ -90,5 +90,11 @@ p {
 	left: 55px;
 	border-radius: 20px;
 	margin: 3vw;
+<<<<<<< HEAD
 	overflow-y: scroll; 
 }
+=======
+	z-index: 10;
+}
+
+>>>>>>> f96cee792c3490a248ba37d3cfdaf38953784a48

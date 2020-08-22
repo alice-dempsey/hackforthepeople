@@ -36,7 +36,10 @@
 
   <div class="scroll_wrapper">
     <div class="panel" id="panel" style="overflow-y: scroll;"><script>populatePanel("panel");</script></div>
-    <script>
+  
+  <img id="arrow" style="position: absolute; left: 1200px; top: 500px; z-index: 0">
+
+  <script>
   document.getElementById('add_page').onclick = duplicate;
   var i = 0;
   var original = document.getElementById('panel');
@@ -53,6 +56,13 @@
       }
       clone.innerHTML = "";
       populatePanel(clone.id)
+
+      if (i > 2) {
+        document.getElementById("arrow").style.width = "4.5vw";
+        document.getElementById("arrow").style.height = "4.5vw";
+        document.getElementById("arrow").src = "arrow.gif";
+        setInterval(function(){ document.getElementById("arrow").src = "arrow.gif"; }, 2200);
+      }
   }
 
 </script>
