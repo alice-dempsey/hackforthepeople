@@ -27,7 +27,21 @@ p {
 	align-items: center; 
 	height: 3vw;
 	width: 15vw;
-	margin-left: 30vw;  
+	margin-left: 20vw;  
+}
+
+.log_out {
+	background-color: #A776FF;
+	border: none;
+	color: white;
+  	padding: 15px 32px;
+  	text-align: center;
+ 	text-decoration: none;
+	border-radius: 25px;
+	margin-left: 2vw; 
+	width: 10%;
+	display: flex; 
+	align-self: flex-end;
 }
 
 .search_bar {

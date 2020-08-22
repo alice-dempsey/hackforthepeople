@@ -8,26 +8,36 @@
   <meta name="author" content="Alice Dempsey">
 
   <link rel="stylesheet" href="../style/style.css">
-  <script src="../scripts/daily_tip.js"></script>
+  <script src="../scripts/customize.js"></script>
   <script src="../scripts/generate_materials.js"></script>
-  <script src="../airtable.js"></script>
+  <script src="../scripts/airtable.js"></script>
 
 </head>
 
 <body>
   <div class="header_wrapper"> 
     <div class="search_bar">
-      <p class="placeholder_text">Search here for resources</p>
+      <p class="placeholder_text"><script type="text/javascript">document.write(getName())</script>'s HubSchool Dashboard</p>
     </div>
 
     <div class="tip_wrapper" id="tip_wrapper">
       <p><script type="text/javascript">generateTip()</script></p>
     </div>
+
+    <button class="log_out" onclick="logOut()">Log Out</button>
+
+    <script type="text/javascript">
+      function logOut() {
+        httpPatch('Login', getData(), getUser());
+        clearLocalStorage(); 
+        window.location.href = "login.html";
+      }
+    </script>
   </div>
 
   <div class="greeting_wrapper">
-    <h2> Welcome, <strong>NAME</strong>!</h2>
-    <p> Here is your homepage for <strong>SCHOOL NAME</strong>. Your teachers will upload materials to the class feed. If you need to add a class or a group, click on the "Add Page" button.</p>
+    <h2> Welcome, <strong><script type="text/javascript">document.write(getName())</script></strong>!</h2>
+    <p> Here is your homepage for <strong><script type="text/javascript">document.write(getSchool())</script></strong>. Your teachers will upload materials to the class feed. If you need to add a class or a group, click on the "Add Page" button.</p>
   </div>
 
   <div class="add_page_wrapper">
@@ -57,7 +67,6 @@
   </div>
 
   <script>
-    // document.getElementById('add_page').onclick = duplicate;
     var i = 0;
     var original = document.getElementById('panel');
 
@@ -71,8 +80,8 @@
         if (i > 2) {
           document.getElementById("arrow").style.width = "4.5vw";
           document.getElementById("arrow").style.height = "4.5vw";
-          document.getElementById("arrow").src = "../arrow.gif";
-          setInterval(function(){ document.getElementById("arrow").src = "../arrow.gif"; }, 2200);
+          document.getElementById("arrow").src = "../style/arrow.gif";
+          setInterval(function(){ document.getElementById("arrow").src = "../style/arrow.gif"; }, 2200);
         }
     }
     // Get the modal
