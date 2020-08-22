@@ -51,7 +51,7 @@ function makeCardHeader(data, image) {
 	// titleTag.style.height = "30px"
 	titleTag.style.marginBottom = "0px"
 	titleTag.appendChild(title); 
-	console.log(titleTag)
+	// console.log(titleTag)
 	var imageTag = document.createElement("img")
 	imageTag.src = image
 	imageTag.style.display = "flex"

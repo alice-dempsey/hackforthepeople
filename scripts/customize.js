@@ -23,6 +23,22 @@ function getSchool() {
 	return info; 
 }
 
+function getClasses() {
+	var info = window.localStorage.getItem('info');
+	info = JSON.parse(info).classes; 
+	return info; 
+}
+
+function updateClasses(title) {
+	var info = window.localStorage.getItem('info');
+	info = JSON.parse(info);
+	var classes = info.classes
+	classes.push({title: title}); 
+	info.classes = classes; 
+	var json = JSON.stringify(info);
+	window.localStorage.setItem('info', json); 
+}
+
 function getUser() {
 	var user = window.localStorage.getItem('user');
 	return user; 
