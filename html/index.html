@@ -38,7 +38,7 @@
       <div class="panel" id="panel" style="overflow-y: scroll;"><script>populatePanel(getvalue("Teacher Data", "math_class"), "panel");</script></div>
   <img id="arrow" style="display: flex; position: absolute; align-self: flex-start; order: 10; right: 20px; bottom: 200px">
 
-  <!-- The Modal -->
+  <!-- The Modal (for add page) -->
   <div id="myModal" class="modal">
 
     <!-- Modal content -->
@@ -53,7 +53,44 @@
         <button id="save" style="position: relative; float: right; top: 25px; width: 15%; height: 30px; background-color: #FFA776; cursor: pointer;border: 0 none; color: #ffffff"><b>Save</b></button>
       </div>
     </div>
+  </div>
 
+  <!-- The Modal (for add resources) -->
+  <div id="myModal-2" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>Add Resources</h2>
+      </div>
+      <div class="modal-body">
+        
+          <div>
+            <h4 style="padding-bottom: -10px">Type</h4>
+            <input type="radio" id="book" name="type" value="book">
+            <label for="book">Book</label><br>
+            <input type="radio" id="worksheet" name="type" value="worksheet">
+            <label for="worksheet">Worksheet</label><br>
+            <input type="radio" id="website" name="type" value="website">
+            <label for="website">Website</label>
+          </div>
+
+          <h4>Title of Resource</h4>
+          <input type="text" id="title" name="Title" style="width: 90%; height: 35px; font-size: 18px; padding-left: 10px;">
+
+
+          <h4 >Description of Resource</h4>
+          <input type="text" id="description" name="Description" style="width: 90%; height: 35px; font-size: 18px; padding-left: 10px;">
+          
+
+          <h4>URL</h4>
+          <input type="text" id="url" name="Url" style="width: 90%; height: 35px; font-size: 18px; padding-left: 10px;">
+
+
+        <button id="save_2" style="position: relative; float: right; top: 25px; width: 15%; height: 30px; background-color: #FFA776; cursor: pointer;border: 0 none; color: #ffffff"><b>Save</b></button>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -75,7 +112,7 @@
           setInterval(function(){ document.getElementById("arrow").src = "../arrow.gif"; }, 2200);
         }
     }
-    // Get the modal
+    // Get the modal (for add page)
     var modal = document.getElementById("myModal");
     // Get the button that opens the modal
     var add_pg = document.getElementById("add_page");
@@ -101,10 +138,32 @@
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-      if (event.target == modal) {
+      if (event.target == modal || event.target == modal_2){
         modal.style.display = "none";
+        modal_2.style.display = "none";
       }
     }
+    // Get the modal (for resources)
+    var modal_2 = document.getElementById("myModal-2");
+    var add_card = document.getElementById("add_new_card");
+    var span_2 = document.getElementsByClassName("close")[1];
+    var save_button_2 = document.getElementById("save_2");
+
+    span_2.onclick = function() {
+      modal_2.style.display = "none";
+    }
+
+    save_button_2.onclick = function() {
+      // put some stuff here to save the json
+      modal_2.style.display = "none";
+    }
+
+    add_card.onclick = function() {
+      modal_2.style.display = "block";
+      
+    }
+
+
   </script>
   </div>
 </body>

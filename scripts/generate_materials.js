@@ -12,6 +12,29 @@
 			makeBookCard(currData[resource], panelId)
 		}
 	}
+	// function call to create add button if in teacher state
+
+	if (true){
+		var element = document.getElementById(panelId);
+		var divTag = document.createElement("div");
+		divTag.style.display = "flex"
+		divTag.style.width = "100%"
+		divTag.style.justifyContent = "center"
+		divTag.style.paddingBottom = "20px"
+		var button = document.createElement("button");
+		button.style.padding = "5px 10px"
+		button.id = "add_new_card"
+		button.innerHTML = "+";
+		divTag.appendChild(button);
+		element.appendChild(divTag);
+
+		button.onclick = function() {
+
+		}
+
+
+	}
+
 }
 
 function makeWebsiteCard(data, panelId) {
