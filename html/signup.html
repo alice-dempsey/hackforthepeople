@@ -34,7 +34,7 @@
 					    <label for="school">School</label>
 					    <input type="school" class="form-control" id="school" placeholder="Tufts Middle School" style="margin-bottom: 20px">
 					    <input type="radio" id="parent" name="role" value="parent">
-						<label for="parent" style="padding-right: 20px">Parent</label>
+						<label for="parent" style="padding-right: 20px">Parent/Student</label>
 						<input type="radio" id="teacher" name="role" value="teacher">
 						<label for="teacher">Teacher</label><br>
 					    <label for="email" style="margin-top: 20px">Email address</label>
@@ -62,7 +62,26 @@
 		</div>
 	</body>
 
-	<script type="text/javascript">signupForm()</script>
+	<script type="text/javascript">
+		const signupButton = document.getElementById("signupForm_Submit");
+
+		signupButton.addEventListener("click", (e) => {
+			e.preventDefault();
+			if(signupFormComplete()) {
+				var info = getInfo(); 
+				var username = getUser(); 
+				try {
+					httpNew("Login", info, username);
+				} catch (e) {
+					httpPatch("Login", info, username);
+				}
+			    alert("Thank you for making an accout!");
+			    window.location.href = "login.html";
+			} else {
+				sendErrorMessage(); 
+			}
+		}) 
+	</script>
 
 	<script type="text/javascript">
 		function ShowPass() {
