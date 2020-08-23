@@ -29,10 +29,14 @@
 
 		</style>
 
+		<script src="../scripts/login.js"></script>
+		<script src="../scripts/airtable.js"></script>
+
+
 	</head>
 
 	<body>
-		<div class="section vh-100">
+		<div class="section vh-250">
 			<div class="container">
 				<div class="bodypage row">
 					<div class="col-md-6 text-center line-height">
@@ -40,7 +44,7 @@
 						<p>This is HubSchool. Filler text Filler text Filler text Filler text Filler text Filler text Filler text. Filler text Filler text Filler text Filler text. Filler text Filler text Filler text Filler text Filler text Filler text Filler text Filler text Filler text Filler text Filler text Filler text. Filler text Filler text.</p>
 					</div>
 					<div class="col-md-6 text-center line-height">
-						<h2>This is the part of the page where you'll be able to log in.</h2>
+						<h2>Log in to get started!</h2>
 						<div class="row-xl rounded text-center" id="login-error-msg-holder">
       					<h6 class="opaque" id="login-error-msg">Invalid username and/or password</h6>
     					</div>
@@ -59,6 +63,8 @@
   						</div >
 						 	<button type="submit" class="btn btn-primary mb-2" id="loginForm_Submit">Submit</button>
 						</form>
+						<p>Don't have an account yet? Sign up here</p>
+						<button class="btn btn-primary mb-2" onclick="document.location='signup.html'">Sign up</button>
 					</div>
 				</div>
 			</div>
@@ -73,17 +79,10 @@
 		loginErrorMsg.style.opacity = 0;
 
 		loginButton.addEventListener("click", (e) => {
-    	e.preventDefault();
-    	const username = loginForm.email.value;
-    	const password = loginForm.pass.value;
-
-	    if (username === "user" && password === "web_dev") {
-	        alert("You have successfully logged in.");
-	        window.location.href = "index.html";
-	    } else {
-	        loginErrorMsg.style.opacity = 1;
-	        loginErrorMsgHolder.style.background = "salmon";
-	    }
+		e.preventDefault();
+		const username = loginForm.email.value;
+		const password = loginForm.pass.value;
+		validate(getvalue("Login", username), username, password); 
 		})
 	</script>
 	<script type="text/javascript">

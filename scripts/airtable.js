@@ -40,8 +40,12 @@
                 // realityInterface.write('value', write_value);
             }
         });
-        console.log(write_value)
-        return write_value;
+        try {
+            return write_value;
+        } catch (e) {
+            return "Value not found";
+        }
+        
     }
 
     // hold ID to use when sending/updating values 
@@ -99,3 +103,12 @@
         };
         xmlHttp.send(JSON.stringify(propValue));
     }
+
+
+
+
+
+
+
+
+

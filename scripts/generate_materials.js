@@ -15,15 +15,15 @@
 }
 
 function makeWebsiteCard(data, panelId) {
-	createCard(data, "../website.png", panelId)
+	createCard(data, "../style/website.png", panelId)
 }
 
 function makeWorksheetCard(data, panelId) {
-	createCard(data, "../worksheet.png", panelId)
+	createCard(data, "../style/worksheet.png", panelId)
 }
 
 function makeBookCard(data, panelId) {
-	createCard(data, "../book.png", panelId)
+	createCard(data, "../style/book.png", panelId)
 }
 
 function createCard(data, image, panelId) {
@@ -51,7 +51,7 @@ function makeCardHeader(data, image) {
 	// titleTag.style.height = "30px"
 	titleTag.style.marginBottom = "0px"
 	titleTag.appendChild(title); 
-	console.log(titleTag)
+	// console.log(titleTag)
 	var imageTag = document.createElement("img")
 	imageTag.src = image
 	imageTag.style.display = "flex"
