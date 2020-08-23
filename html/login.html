@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Login Page</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+		<style type="text/css">
+
+		body, html {
+			height: 100%;
+			margin: 0;
+			font-family: Arial, Helvetica, sans-serif;
+			background-color: #76CEFF;
+		}
+
+		.section{
+			background: #76CEFF;
+			padding-top: 120px;
+		}
+
+
+		.line-height h2{
+			line-height: 2;
+		}
+
+		.opaque{
+			opacity: 0;
+		}
+
+		.line-height p{
+			line-height: 3;
+		}
+.collapsible {
+  background-color: #A776FF;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: rgb(167,118,255, .7);
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: rgb(241,241,241, .9);
+}
+
+		</style>
+
+		<script src="../scripts/login.js"></script>
+		<script src="../scripts/airtable.js"></script>
+
+
+	</head>
+
+	<body>
+		<div class="section vh-250">
+			<div class="container">
+				<div class="bodypage row">
+					<div class="col-md-6 text-center line-height">
+						<div style="background-color: #FFA776; padding: 15px; border-radius: 15px;">
+							<h2 style="color: #fff"> <b>Hello! Welcome to HubSchool</b></h2>
+							<p style="color: #000; line-height: 35px">With HubSchool, we make it super easy to keep in touch with students, parents, and teachers. Our website allows everyone to add "pages" for any class, club, or school activity. Here, you can get real time updates about your classes, or if you a parent, helpful information to help your child/children with their school work. To get started, just sign in or create an account on the right!.</p>
+							<button type="button" class="collapsible">More Information</button>
+							<div class="content">
+							  <p>FILL HERE WITH MORE CONTENT</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 text-center line-height">
+						<h2>Log in to get started!</h2>
+						<div class="row-xl rounded text-center" id="login-error-msg-holder">
+      					<h6 class="opaque" id="login-error-msg">Invalid username and/or password</h6>
+    					</div>
+						<form id="loginForm">
+						 <div class="form-group text-left">
+						    <label for="email">Email address</label>
+						    <input type="email" class="form-control" id="email" placeholder="name@example.com">
+						  </div>
+						 <div class="form-group text-left">
+						    <label for="pass">Password</label>
+						    <input type="password" class="form-control" id="pass" placeholder="">
+						 </div>
+						 <div class="form-check text-left">
+    						<input type="checkbox" onclick="ShowPass()" class="form-check-input">
+    						<label class="form-check-label">Show Password</label>
+  						</div >
+						 	<button type="submit" class="btn btn-primary mb-2" id="loginForm_Submit">Submit</button>
+						</form>
+						<p>Don't have an account yet? Sign up here</p>
+						<button class="btn btn-primary mb-2" onclick="document.location='signup.html'">Sign up</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		const loginForm = document.getElementById("loginForm");
+		const loginButton = document.getElementById("loginForm_Submit");
+		const loginErrorMsg = document.getElementById("login-error-msg");
+		const loginErrorMsgHolder = document.getElementById("login-error-msg-holder");
+		loginErrorMsg.style.opacity = 0;
+
+		loginButton.addEventListener("click", (e) => {
+		e.preventDefault();
+		const username = loginForm.email.value;
+		const password = loginForm.pass.value;
+		validate(getvalue("Login", username), username, password); 
+		})
+	</script>
+	<script type="text/javascript">
+		function ShowPass() {
+			var x = document.getElementById("pass");
+			if (x.type === "password") {
+				x.type = "text";
+			} else {
+				x.type = "password";
+			}
+		}
+	</script>
+	<script>
+		var coll = document.getElementsByClassName("collapsible");
+		var i;
+
+		for (i = 0; i < coll.length; i++) {
+		  coll[i].addEventListener("click", function() {
+		    this.classList.toggle("active");
+		    var content = this.nextElementSibling;
+		    if (content.style.display === "block") {
+		      content.style.display = "none";
+		    } else {
+		      content.style.display = "block";
+		    }
+		  });
+		}
+	</script>
+
+
+</html>
