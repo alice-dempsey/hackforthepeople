@@ -59,7 +59,7 @@
       </div>
   <img id="arrow" style="display: flex; position: absolute; align-self: flex-start; order: 10; right: 20px; bottom: 200px">
 
-  <!-- The Modal -->
+  <!-- The Modal (for add page) -->
   <div id="myModal" class="modal">
 
     <!-- Modal content -->
@@ -74,7 +74,47 @@
         <button id="save" style="position: relative; float: right; top: 25px; width: 15%; height: 30px; background-color: #FFA776; cursor: pointer;border: 0 none; color: #ffffff"><b>Save</b></button>
       </div>
     </div>
+  </div>
 
+  <!-- The Modal (for add resources) -->
+  <div id="myModal-2" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>Add Resources</h2>
+      </div>
+      <div class="modal-body">
+
+        <h4>Class Name</h4>
+        <input type="text" id="class_name" name="Class" style="width: 90%; height: 35px; font-size: 18px; padding-left: 10px;">
+        
+          <div id="radio_type">
+            <h4 style="padding-bottom: -10px">Type</h4>
+            <input type="radio" id="book" name="edu" value="book">
+            <label for="book">Book</label><br>
+            <input type="radio" id="worksheet" name="edu" value="worksheet">
+            <label for="worksheet">Worksheet</label><br>
+            <input type="radio" id="website" name="edu" value="website">
+            <label for="website">Website</label>
+          </div>
+
+          <h4>Title of Resource</h4>
+          <input type="text" id="title" name="Title" style="width: 90%; height: 35px; font-size: 18px; padding-left: 10px;">
+
+
+          <h4 >Description of Resource</h4>
+          <input type="text" id="description" name="Description" style="width: 90%; height: 35px; font-size: 18px; padding-left: 10px;">
+          
+
+          <h4>URL</h4>
+          <input type="text" id="url" name="Url" style="width: 90%; height: 35px; font-size: 18px; padding-left: 10px;">
+
+
+        <button id="save_2" style="position: relative; float: right; top: 25px; width: 15%; height: 30px; background-color: #FFA776; cursor: pointer;border: 0 none; color: #ffffff"><b>Save</b></button>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -102,7 +142,7 @@
           setInterval(function(){ document.getElementById("arrow").src = "../style/arrow.gif"; }, 2200);
         }
     }
-    // Get the modal
+    // Get the modal (for add page)
     var modal = document.getElementById("myModal");
     // Get the button that opens the modal
     var add_pg = document.getElementById("add_page");
@@ -138,10 +178,74 @@
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-      if (event.target == modal) {
+      if (event.target == modal || event.target == modal_2){
         modal.style.display = "none";
+        modal_2.style.display = "none";
       }
     }
+
+    function getRadioVal(form, name) {
+      var value;
+      // get list of radio buttons with specified name
+      console.log(typeof name); 
+      var radios = document.getElementsByName("edu")
+      
+      // loop through list of radio buttons
+      for (var i=0, len=radios.length; i<len; i++) {
+          if ( radios[i].checked ) { // radio checked?
+              value = radios[i].value; // if so, hold its value in val
+              break; // and break out of for loop
+          }
+      }
+      return value; // return value of checked radio or undefined if none checked
+    }
+
+    // Get the modal (for resources)
+    var modal_2 = document.getElementById("myModal-2");
+    var add_card = document.getElementById("add_new_card");
+    var span_2 = document.getElementsByClassName("close")[1];
+    var save_button_2 = document.getElementById("save_2");
+    
+
+
+    span_2.onclick = function() {
+      modal_2.style.display = "none";
+    }
+
+    save_button_2.onclick = function() {
+      var modal_class_name = document.getElementById("class_name").value;
+      var modal_type = getRadioVal(document.getElementById("radio_type"), 'edu');
+      var modal_title = document.getElementById("title").value;
+      var modal_desc = document.getElementById("description").value;
+      var modal_url = document.getElementById("url").value;
+
+
+      var class_json = getvalue("Teacher Data", document.getElementById("class_name").value);
+      var class_json = JSON.parse(class_json);
+      var new_json = createJSON(modal_type, modal_title, modal_desc, modal_url);
+      class_json.resources.push(new_json);
+
+      console.log(class_json);
+
+      class_json = JSON.stringify(class_json);
+
+      httpPatch("Teacher Data", class_json, modal_class_name);
+      populatePanel()
+
+      modal_2.style.display = "none";
+    }
+
+    function createJSON(mytype, mytitle, mydesc, myurl) {
+      var json = { type: mytype, title: mytitle, description: mydesc, url: myurl};
+      return json; 
+    }
+
+
+    add_card.onclick = function() {
+      modal_2.style.display = "block";
+    }
+
+
   </script>
   </div>
 </body>
