@@ -1,0 +1,28 @@
+{
+	"resources": [
+	{
+		"type": "book",
+		"title": "To Kill a Mockingbird",
+		"description": "Read Chapters 1-3", 
+		"url": ""
+	}, 
+	{
+		"type": "worksheet",
+		"title": "Reading Journal",
+		"description": "Write a short paragraph reflection on the first chapters of our book.", 
+		"url": ""
+	},
+	{
+		"type": "worksheet",
+		"title": "Character Sheet",
+		"description": "Fill out the character sheet with the name and some important traits of the characters.", 
+		"url": "https://data.templateroller.com/pdf_docs_html/66/663/66343/to-kill-a-mockingbird-character-list-template_big.png"
+	},
+	{
+		"type": "book",
+		"title": "Your Choice!",
+		"description": "Read at least 20 pages from a chapter book of your choice this week", 
+		"url": ""
+	}
+]
+}

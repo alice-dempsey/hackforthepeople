@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>HubSchool</title>
+  <meta name="description" content="HubSchool">
+  <meta name="author" content="Alice Dempsey">
+
+  <link rel="stylesheet" href="../style/style.css">
+  <script src="../scripts/customize.js"></script>
+  <script src="../scripts/generate_materials.js"></script>
+  <script src="../scripts/airtable.js"></script>
+
+</head>
+
+<body>
+
+  <div class="header_wrapper"> 
+    <div class="search_bar">
+      <p class="placeholder_text"><script type="text/javascript">document.write(getName())</script>'s HubSchool Dashboard</p>
+        <!-- Google Translate API call -->
+      <div id="google_translate_element"></div>
+
+      <script type="text/javascript" src= "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"> 
+      </script>
+
+      <script type="text/javascript">  
+        function googleTranslateElementInit() {  
+            new google.translate.TranslateElement( 
+                {pageLanguage: 'en'},  
+                'google_translate_element' 
+            );  
+        }  
+      </script>
+    </div>
+
+    <div class="tip_wrapper" id="tip_wrapper">
+      <p><script type="text/javascript">generateTip()</script></p>
+    </div>
+
+    <button class="log_out" onclick="logOut()">Log Out</button>
+
+    <script type="text/javascript">
+      function logOut() {
+        httpPatch('Login', getData(), getUser());
+        clearLocalStorage(); 
+        window.location.href = "login.html";
+      }
+    </script>
+  </div>
+
+  <div class="greeting_wrapper">
+    <h2> Welcome, <strong><script type="text/javascript">document.write(getName())</script></strong>!</h2>
+    <p> Here is your homepage for <strong><script type="text/javascript">document.write(getSchool())</script></strong>. Your teachers will upload materials to the class feed. If you need to add a class or a group, click on the "Add Page" button.</p>
+  </div>
+
+  <div class="add_page_wrapper">
+    <button class="add_page" id="add_page">Add Page</button>
+  </div>
+
+  <div class="scroll_wrapper">
+      <div class="panel" id="panel" style="overflow-y: scroll;">
+        <script>
+          var classes = getClasses();
+          if (classes != '') {
+            populatePanel(getvalue("Teacher Data", classes[0].title), "panel", classes[0].title);
+          } else {
+            var empty = true; 
+            var element = document.getElementById("panel");
+            element.innerHTML = "<center style=\"padding: 3vw;\">Add your classes to see the resources!</center>"; 
+          }
+      </script>
+      </div>
+  <img id="arrow" style="display: flex; position: absolute; align-self: flex-start; order: 10; right: 20px; bottom: 200px">
+
+  <!-- The Modal (for add page) -->
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>Search for a page</h2>
+      </div>
+      <div class="modal-body">
+        <center><input type="text" id="selected_class" name="search" placeholder="Search..." style="width: 90%; height: 35px; font-size: 18px; padding-left: 10px;"></center>
+
+        <button id="save" style="position: relative; float: right; top: 25px; width: 15%; height: 30px; background-color: #FFA776; cursor: pointer;border: 0 none; color: #ffffff; font-size: 2vw"><b>Save</b></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- The Modal (for add resources) -->
+  <div id="myModal-2" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>Add Resources</h2>
+      </div>
+      <div class="modal-body">
+
+        <h4>Class Name</h4>
+        <input type="text" id="class_name" name="Class" style="width: 90%; height: 35px; font-size: 18px; padding-left: 10px;">
+        
+          <div id="radio_type">
+            <h4 style="padding-bottom: -10px">Type</h4>
+            <input type="radio" id="book" name="edu" value="book">
+            <label for="book">Book</label><br>
+            <input type="radio" id="worksheet" name="edu" value="worksheet">
+            <label for="worksheet">Worksheet</label><br>
+            <input type="radio" id="website" name="edu" value="website">
+            <label for="website">Website</label>
+          </div>
+
+          <h4>Title of Resource</h4>
+          <input type="text" id="title" name="Title" style="width: 90%; height: 35px; font-size: 18px; padding-left: 10px;">
+
+
+          <h4 >Description of Resource</h4>
+          <input type="text" id="description" name="Description" style="width: 90%; height: 35px; font-size: 18px; padding-left: 10px;">
+          
+
+          <h4>URL</h4>
+          <input type="text" id="url" name="Url" style="width: 90%; height: 35px; font-size: 18px; padding-left: 10px;">
+
+
+        <button id="save_2" style="position: relative; float: right; top: 25px; width: 15%; height: 30px; background-color: #FFA776; cursor: pointer;border: 0 none; color: #ffffff"><b>Save</b></button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var i = 0;
+    var original = document.getElementById('panel');
+
+    var classes = getClasses();
+    if (classes != null) {
+      for (var i = 1; i < classes.length; i++) {
+        duplicate(classes[i].title); 
+      }
+    }
+  
+    function duplicate(className) {
+        var clone = original.cloneNode(true); // "deep" clone
+        clone.id = "panel" + ++i; // there can only be one element with an ID
+        original.parentNode.appendChild(clone);
+        clone.innerHTML = "";
+        populatePanel(getvalue("Teacher Data", className), clone.id, className)
+
+        if (i > 2) {
+          document.getElementById("arrow").style.width = "4.5vw";
+          document.getElementById("arrow").style.height = "4.5vw";
+          document.getElementById("arrow").src = "../style/arrow.gif";
+          setInterval(function(){ document.getElementById("arrow").src = "../style/arrow.gif"; }, 2200);
+        }
+    }
+    // Get the modal (for add page)
+    var modal = document.getElementById("myModal");
+    // Get the button that opens the modal
+    var add_pg = document.getElementById("add_page");
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    var save_button = document.getElementById("save");
+    var modal_text = document.getElementById("selected_class"); 
+    
+    // When the user clicks the button, open the modal, and duplicate
+    add_pg.onclick = function() {
+      modal.style.display = "block";
+      modal_text.value = "";
+    }
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    save_button.onclick = function() {
+      var title = document.getElementById("selected_class").value; 
+      if(empty) {
+        var element = document.getElementById("panel");
+        element.innerHTML = '';
+        populatePanel(getvalue("Teacher Data", title), "panel", title);
+
+        console.log("we're in the empty thing");
+
+        add_card = document.getElementById("add_new_card");
+
+        console.log(add_card);
+        empty = false; 
+      } else {
+        duplicate(title);
+      }
+      updateClasses(title); 
+      
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal || event.target == modal_2){
+        modal.style.display = "none";
+        modal_2.style.display = "none";
+      }
+    }
+
+    function getRadioVal(form, name) {
+      var value;
+      // get list of radio buttons with specified name
+      console.log(typeof name); 
+      var radios = document.getElementsByName("edu")
+      
+      // loop through list of radio buttons
+      for (var i=0, len=radios.length; i<len; i++) {
+          if ( radios[i].checked ) { // radio checked?
+              value = radios[i].value; // if so, hold its value in val
+              break; // and break out of for loop
+          }
+      }
+      return value; // return value of checked radio or undefined if none checked
+    }
+
+    // Get the modal (for resources)
+    var modal_2 = document.getElementById("myModal-2");
+    var add_card = document.getElementById("add_new_card");
+    var span_2 = document.getElementsByClassName("close")[1];
+    var save_button_2 = document.getElementById("save_2");
+    
+
+
+    span_2.onclick = function() {
+      modal_2.style.display = "none";
+    }
+
+    save_button_2.onclick = function() {
+      var modal_class_name = document.getElementById("class_name").value;
+      var modal_type = getRadioVal(document.getElementById("radio_type"), 'edu');
+      var modal_title = document.getElementById("title").value;
+      var modal_desc = document.getElementById("description").value;
+      var modal_url = document.getElementById("url").value;
+
+
+      var class_json = getvalue("Teacher Data", document.getElementById("class_name").value);
+      var class_json = JSON.parse(class_json);
+      var new_json = createJSON(modal_type, modal_title, modal_desc, modal_url);
+      class_json.resources.push(new_json);
+
+      console.log(class_json);
+
+      class_json = JSON.stringify(class_json);
+
+      httpPatch("Teacher Data", class_json, modal_class_name);
+      populatePanel(class_json, getPanelId(modal_class_name), modal_class_name);
+
+      modal_2.style.display = "none";
+    }
+
+    function createJSON(mytype, mytitle, mydesc, myurl) {
+      var json = { type: mytype, title: mytitle, description: mydesc, url: myurl};
+      return json; 
+    }
+
+    if(isTeacher()) {
+      add_card.onclick = function() {
+        modal_2.style.display = "block";
+      }
+    }
+    
+
+
+  </script>
+  </div>
+</body>
+</html>

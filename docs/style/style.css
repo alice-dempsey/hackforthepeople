@@ -1,0 +1,238 @@
+body, html {
+	height: 100%;
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #76CEFF;
+}
+
+h2 {
+	font-family: sans-serif;
+}
+
+p {
+	font-family: sans-serif; 
+}
+
+.section{
+	background: #76CEFF;
+	padding-top: 120px;
+}
+
+
+.line-height h2{
+	line-height: 2;
+}
+
+.opaque{
+	opacity: 0;
+}
+
+.line-height p{
+	line-height: 3;
+}
+
+.collapsible {
+  background-color: #A776FF;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: rgb(167,118,255, .7);
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: rgb(241,241,241, .9);
+}
+
+
+.header_wrapper {
+	display: flex; 
+	width: 100%; 
+	margin-top: 2vw; 
+	margin-bottom: 3vw;
+	align-items: baseline;
+}
+
+.tip_wrapper {
+	display: flex;
+	align-self: flex-end;
+	align-items: center; 
+	height: 3vw;
+	width: 15vw;
+	margin-left: 20vw;  
+}
+
+.log_out {
+	background-color: #A776FF;
+	border: none;
+	color: white;
+  	padding: 15px 32px;
+  	text-align: center;
+ 	text-decoration: none;
+	border-radius: 25px;
+	margin-left: 2vw; 
+	width: 10%;
+	display: flex; 
+	align-self: flex-end;
+}
+
+.search_bar {
+	background-color: #FFA776; 
+	display: flex;
+	color: white;
+	width: 50%;
+	align-items: center;
+	justify-content: space-around;
+	border-radius: 25px;
+	height: 3vw;
+	margin-left: 2vw; 
+}
+
+.placeholder_text {
+	display: flex;
+	font-style: italic;
+	/*overflow: hidden;*/
+	white-space: wrap; 
+}
+
+#google_translate_element {
+	/*padding-left: 7vw; */
+}
+
+.goog-te-combo {
+	display: flex; 
+	align-self: flex-end;
+	background-color: #A776FF; 
+	border-radius: 25px; 
+}
+
+.greeting_wrapper {
+	width: 60%; 
+	margin-left: 3vw;
+}
+
+.add_page_wrapper {
+	display: flex;
+	justify-content: flex-end;
+	width: 100%; 
+	flex-direction: column;
+}
+
+.add_page {
+	background-color: #FFA776;
+	border: none;
+	color: white;
+  padding: 15px 32px;
+  text-align: center;
+ 	text-decoration: none;
+	border-radius: 25px;
+	margin-bottom: 2%;
+	margin-right: 2%;  
+	width: 10%;
+	display: flex; 
+	align-self: flex-end;
+}
+
+.scroll_wrapper { 
+	display: flex; 
+	flex-wrap: nowrap;
+	overflow-x: auto;
+	align-items: space-between;
+	margin-right: 10px; 
+ }
+
+#panel {
+	margin-left: 6vw;
+}
+
+.panel {
+	flex: 0 0 auto;
+	background-color: #fcfcfc;
+	width: 25vw;
+	height: 40vw;
+	top: 80px;
+	left: 55px;
+	border-radius: 20px;
+	margin: 3vw;
+	overflow-y: scroll; 
+	z-index: 1;
+	/*display: flex;*/
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 10; /* Sit on top */
+  padding-top: 20px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #A776FF;
+  color: white;
+}
+
+.modal-body {
+	padding: 20px 16px;
+	padding-bottom: 80px;
+}
+

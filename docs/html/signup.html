@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+
+<html>
+	<head>
+		<title>Sign Up</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+		<style type="text/css">
+
+		.section {
+			background: #76CEFF;
+			padding-top: 120px;
+		}
+
+		</style>
+
+		<script src="../scripts/airtable.js"></script>
+		<script src="../scripts/signup.js"></script>
+
+	</head>
+
+	<body>
+		<div class="section vh-250">
+			<div class="container text-center padding-top-50">
+				<h2 class="display-4" style="padding-bottom: 20px"> Create your account with HubSchool </h2>
+				<form id="signupForm">
+					 <div class="form-group text-left">
+					    <label for="name">Full Name</label>
+					    <input type="name" class="form-control" id="name" placeholder="Barack Obama" style="margin-bottom: 20px">
+					    <label for="school">School</label>
+					    <input type="school" class="form-control" id="school" placeholder="Tufts Middle School" style="margin-bottom: 20px">
+					    <input type="radio" id="parent" name="role" value="parent">
+						<label for="parent" style="padding-right: 20px">Parent/Student</label>
+						<input type="radio" id="teacher" name="role" value="teacher">
+						<label for="teacher">Teacher</label><br>
+					    <label for="email" style="margin-top: 20px">Email address</label>
+					    <input type="email" class="form-control" id="email" placeholder="name@example.com">
+					  </div>
+					  <div class="row-xl rounded text-center" id="signup-error-msg-holder">
+  						<h6 style="opacity: 0" id="signup-error-msg">Passwords must be the same</h6>
+					  </div>
+
+					 <div class="form-group text-left">
+					    <label for="pass1">Password</label>
+					    <input type="password" class="form-control" id="pass1" placeholder="">
+					 </div>
+					 <div class="form-group text-left">
+					    <label for="pass2">Confirm Password</label>
+					    <input type="password" class="form-control" id="pass2" placeholder="">
+					 </div>
+					 <div class="form-check text-left" style="padding-bottom: 20px">
+						<input type="checkbox" onclick="ShowPass()" class="form-check-input">
+						<label class="form-check-label">Show Passwords</label>
+						</div>
+					 	<button type="submit" class="btn btn-primary mb-2" id="signupForm_Submit">Submit</button>
+				</form>
+			</div>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		const signupButton = document.getElementById("signupForm_Submit");
+
+		signupButton.addEventListener("click", (e) => {
+			e.preventDefault();
+			if(signupFormComplete()) {
+				var info = getInfo(); 
+				var username = getUser(); 
+				try {
+					httpNew("Login", info, username);
+				} catch (e) {
+					httpPatch("Login", info, username);
+				}
+			    alert("Thank you for making an accout!");
+			    window.location.href = "login.html";
+			} else {
+				sendErrorMessage(); 
+			}
+		}) 
+	</script>
+
+	<script type="text/javascript">
+		function ShowPass() {
+			var x = document.getElementById("pass1");
+			var y = document.getElementById("pass2");
+			if (x.type === "password") {
+				x.type = "text";
+				y.type = "text";
+			} else {
+				x.type = "password";
+				y.type = "password";
+			}
+		}
+	</script>
+</html>
