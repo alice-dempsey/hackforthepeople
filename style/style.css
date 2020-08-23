@@ -13,6 +13,48 @@ p {
 	font-family: sans-serif; 
 }
 
+.section{
+	background: #76CEFF;
+	padding-top: 120px;
+}
+
+
+.line-height h2{
+	line-height: 2;
+}
+
+.opaque{
+	opacity: 0;
+}
+
+.line-height p{
+	line-height: 3;
+}
+
+.collapsible {
+  background-color: #A776FF;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: rgb(167,118,255, .7);
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: rgb(241,241,241, .9);
+}
+
+
 .header_wrapper {
 	display: flex; 
 	width: 100%; 

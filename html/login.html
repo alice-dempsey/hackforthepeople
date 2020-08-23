@@ -8,35 +8,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
-		<style type="text/css">
-
-		body, html {
-			height: 100%;
-			margin: 0;
-			font-family: Arial, Helvetica, sans-serif;
-			background-color: #76CEFF;
-		}
-
-		.section{
-			background: #76CEFF;
-			padding-top: 120px;
-		}
-
-
-		.line-height h2{
-			line-height: 2;
-		}
-
-		.opaque{
-			opacity: 0;
-		}
-
-		.line-height p{
-			line-height: 3;
-		}
-
-		</style>
-
+  		<link rel="stylesheet" href="../style/style.css">
 		<script src="../scripts/login.js"></script>
 		<script src="../scripts/airtable.js"></script>
 
@@ -48,8 +20,14 @@
 			<div class="container">
 				<div class="bodypage row">
 					<div class="col-md-6 text-center line-height">
-						<h2>Hello! Welcome to HubSchool.</h2>
-						<p>This is HubSchool. Filler text Filler text Filler text Filler text Filler text Filler text Filler text. Filler text Filler text Filler text Filler text. Filler text Filler text Filler text Filler text Filler text Filler text Filler text Filler text Filler text Filler text Filler text Filler text. Filler text Filler text.</p>
+						<div style="background-color: #FFA776; padding: 15px; border-radius: 15px;">
+							<h2 style="color: #fff"> <b>Hello! Welcome to HubSchool</b></h2>
+							<p style="color: #000; line-height: 35px">With HubSchool, we make it super easy to keep in touch with students, parents, and teachers. Our website allows everyone to add "pages" for any class, club, or school activity. Here, you can get real time updates about your classes, or if you a parent, helpful information to help your child/children with their school work. To get started, just sign in or create an account on the right!.</p>
+							<button type="button" class="collapsible"><center><b>More Information</b></center></button>
+							<div class="content">
+							  <p>FILL HERE WITH MORE CONTENT</p>
+							</div>
+						</div>
 					</div>
 					<div class="col-md-6 text-center line-height">
 						<h2>Log in to get started!</h2>
@@ -101,6 +79,22 @@
 			} else {
 				x.type = "password";
 			}
+		}
+	</script>
+	<script>
+		var coll = document.getElementsByClassName("collapsible");
+		var i;
+
+		for (i = 0; i < coll.length; i++) {
+		  coll[i].addEventListener("click", function() {
+		    this.classList.toggle("active");
+		    var content = this.nextElementSibling;
+		    if (content.style.display === "block") {
+		      content.style.display = "none";
+		    } else {
+		      content.style.display = "block";
+		    }
+		  });
 		}
 	</script>
 
