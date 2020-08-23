@@ -15,7 +15,6 @@
 </head>
 
 <body>
-  
 
   <div class="header_wrapper"> 
     <div class="search_bar">
@@ -65,7 +64,7 @@
         <script>
           var classes = getClasses();
           if (classes != '') {
-            populatePanel(getvalue("Teacher Data", classes[0].title), "panel");
+            populatePanel(getvalue("Teacher Data", classes[0].title), "panel", classes[0].title);
           } else {
             var empty = true; 
             var element = document.getElementById("panel");
@@ -149,7 +148,7 @@
         clone.id = "panel" + ++i; // there can only be one element with an ID
         original.parentNode.appendChild(clone);
         clone.innerHTML = "";
-        populatePanel(getvalue("Teacher Data", className), clone.id)
+        populatePanel(getvalue("Teacher Data", className), clone.id, className)
 
         if (i > 2) {
           document.getElementById("arrow").style.width = "4.5vw";
@@ -182,7 +181,7 @@
       if(empty) {
         var element = document.getElementById("panel");
         element.innerHTML = '';
-        populatePanel(getvalue("Teacher Data", title), "panel");
+        populatePanel(getvalue("Teacher Data", title), "panel", title);
 
         console.log("we're in the empty thing");
 
@@ -252,7 +251,7 @@
       class_json = JSON.stringify(class_json);
 
       httpPatch("Teacher Data", class_json, modal_class_name);
-      populatePanel(class_json, getPanelId(modal_class_name));
+      populatePanel(class_json, getPanelId(modal_class_name), modal_class_name);
 
       modal_2.style.display = "none";
     }
@@ -262,10 +261,12 @@
       return json; 
     }
 
-
-    add_card.onclick = function() {
-      modal_2.style.display = "block";
+    if(isTeacher()) {
+      add_card.onclick = function() {
+        modal_2.style.display = "block";
+      }
     }
+    
 
 
   </script>

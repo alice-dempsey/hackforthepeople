@@ -1,6 +1,8 @@
- function populatePanel(data, panelId) {
+ function populatePanel(data, panelId, title) {
 	var currData = JSON.parse(data)
 	currData = currData.resources
+	console.log(title)
+	createTitleCard(title, panelId)
 	for (resource in currData) {
 		if(currData[resource].type == "website") {
 			makeWebsiteCard(currData[resource], panelId); 
@@ -12,9 +14,9 @@
 			makeBookCard(currData[resource], panelId)
 		}
 	}
-	// function call to create add button if in teacher state
 
-	if (true){
+	// create button if teacher
+	if (isTeacher()){
 		var element = document.getElementById(panelId);
 		var divTag = document.createElement("div");
 		divTag.style.display = "flex"
@@ -33,10 +35,14 @@
 		button.onclick = function() {
 			modal_2.style.display = "block";
 		}
-
-
 	}
 
+}
+
+function isTeacher() {
+	var info = window.localStorage.getItem('info');
+	info = JSON.parse(info).role;
+	return (info === "teacher");
 }
 
 function makeWebsiteCard(data, panelId) {
@@ -64,6 +70,25 @@ function createCard(data, image, panelId) {
 	element.appendChild(divTag)
 }
 
+function createTitleCard(data, panelId) {
+	var divTag = document.createElement("div");
+	divTag.style.margin = "10px"; 
+	divTag.style.borderRadius = "20px"
+
+	var titleTag = document.createElement("h2")
+	var title = document.createTextNode(data);
+	titleTag.style.display = "flex"
+	titleTag.style.padding = "5px"
+	titleTag.style.marginBottom = "0px"
+	titleTag.appendChild(title); 
+
+	var element = document.getElementById(panelId)
+	console.log(divTag)
+	divTag.appendChild(titleTag)
+	console.log(divTag)
+	element.appendChild(divTag)
+}
+
 function makeCardHeader(data, image) {
 	var headerTag = document.createElement("div"); 
 	headerTag.style.display = "flex"
@@ -73,10 +98,8 @@ function makeCardHeader(data, image) {
 	var title = document.createTextNode(data.title);
 	titleTag.style.display = "flex"
 	titleTag.style.padding = "5px"
-	// titleTag.style.height = "30px"
 	titleTag.style.marginBottom = "0px"
 	titleTag.appendChild(title); 
-	// console.log(titleTag)
 	var imageTag = document.createElement("img")
 	imageTag.src = image
 	imageTag.style.display = "flex"

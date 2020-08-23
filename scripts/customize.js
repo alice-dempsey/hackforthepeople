@@ -11,9 +11,7 @@ function generateTip() {
 
 function getName() {
 	var info = window.localStorage.getItem('info');
-	console.log(info) 
 	info = JSON.parse(info).name; 
-	console.log(info)
 	return info; 
 }
 

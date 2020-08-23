@@ -21,17 +21,6 @@ p {
 	align-items: baseline;
 }
 
-#google_translate_element {
-	padding-left: 7vw; 
-}
-
-.goog-te-combo {
-	display: flex; 
-	align-self: flex-end;
-	background-color: #A776FF; 
-	border-radius: 25px; 
-}
-
 .tip_wrapper {
 	display: flex;
 	align-self: flex-end;
@@ -61,6 +50,7 @@ p {
 	color: white;
 	width: 50%;
 	align-items: center;
+	justify-content: space-around;
 	border-radius: 25px;
 	height: 3vw;
 	margin-left: 2vw; 
@@ -68,9 +58,20 @@ p {
 
 .placeholder_text {
 	display: flex;
-	margin-left: 2vw; 
 	font-style: italic;
-	padding-right: 5vw;
+	/*overflow: hidden;*/
+	white-space: wrap; 
+}
+
+#google_translate_element {
+	/*padding-left: 7vw; */
+}
+
+.goog-te-combo {
+	display: flex; 
+	align-self: flex-end;
+	background-color: #A776FF; 
+	border-radius: 25px; 
 }
 
 .greeting_wrapper {
