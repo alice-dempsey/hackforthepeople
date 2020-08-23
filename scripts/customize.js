@@ -29,6 +29,19 @@ function getClasses() {
 	return info; 
 }
 
+function getPanelId(title) {
+	var classes = getClasses();
+	for(var i = 0; i < classes.length; i++) {
+		if (classes[i].title === title){
+			if(i == 0){
+				return "panel";
+			} else {
+				return "panel" + i;
+			}
+		}
+	}
+}
+
 function updateClasses(title) {
 	var info = window.localStorage.getItem('info');
 	info = JSON.parse(info);

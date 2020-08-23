@@ -167,6 +167,12 @@
         var element = document.getElementById("panel");
         element.innerHTML = '';
         populatePanel(getvalue("Teacher Data", title), "panel");
+
+        console.log("we're in the empty thing");
+
+        add_card = document.getElementById("add_new_card");
+
+        console.log(add_card);
         empty = false; 
       } else {
         duplicate(title);
@@ -230,7 +236,7 @@
       class_json = JSON.stringify(class_json);
 
       httpPatch("Teacher Data", class_json, modal_class_name);
-      populatePanel()
+      populatePanel(class_json, getPanelId(modal_class_name));
 
       modal_2.style.display = "none";
     }

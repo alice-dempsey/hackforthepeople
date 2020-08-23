@@ -23,13 +23,15 @@
 		divTag.style.paddingBottom = "20px"
 		var button = document.createElement("button");
 		button.style.padding = "5px 10px"
-		button.id = "add_new_card"
+		button.id = "add_new_card";
 		button.innerHTML = "+";
 		divTag.appendChild(button);
 		element.appendChild(divTag);
 
-		button.onclick = function() {
+		var modal_2 = document.getElementById("myModal-2");
 
+		button.onclick = function() {
+			modal_2.style.display = "block";
 		}
 
 
