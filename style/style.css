@@ -21,6 +21,17 @@ p {
 	align-items: baseline;
 }
 
+#google_translate_element {
+	padding-left: 7vw; 
+}
+
+.goog-te-combo {
+	display: flex; 
+	align-self: flex-end;
+	background-color: #A776FF; 
+	border-radius: 25px; 
+}
+
 .tip_wrapper {
 	display: flex;
 	align-self: flex-end;
@@ -59,6 +70,7 @@ p {
 	display: flex;
 	margin-left: 2vw; 
 	font-style: italic;
+	padding-right: 5vw;
 }
 
 .greeting_wrapper {
